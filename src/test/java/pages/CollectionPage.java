@@ -15,6 +15,8 @@ public class CollectionPage {
     public By Select_all_checkbox = By.xpath("//label[text()=' Select all ']");
     public By Filter_Button = By.cssSelector("button img[alt='Filter icon']");
     public By Status_Filter = By.xpath("//li[.//a[contains(text(),'Status')]]");
+    public By Unmatched_filter = By.xpath("//label[contains(text(),'Unmatched')]");
+    public By Apply_Button = By.xpath("//button[contains(text(),'Apply')]");
 
 
     public CollectionPage(WebDriver driver) {
@@ -28,6 +30,7 @@ public class CollectionPage {
     }
     public void clickFilter()
     {
+        WebElement Filter = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button img[alt='Filter icon")));
         driver.findElement(Filter_Button).click();
     }
     public void selectStatusFilter()
@@ -35,4 +38,13 @@ public class CollectionPage {
         WebElement StatusFilter = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[.//a[contains(text(),'Status')]]")));
         driver.findElement(Status_Filter).click();
     }
+    public void selectUnmatchFilter(){
+        WebElement UnmatchFilter = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(text(),'Unmatched')]")));
+        driver.findElement(Unmatched_filter).click();
+    }
+    public void clickApplyButton()
+    {
+        driver.findElement(Apply_Button).click();
+    }
+
 }
